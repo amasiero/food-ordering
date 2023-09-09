@@ -1,13 +1,8 @@
 package me.amasiero.food.ordering.domain.valueobjects;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-@Getter
-@EqualsAndHashCode(callSuper = false)
 public record Money(BigDecimal amount) {
     public boolean isGreaterThanZero() {
         return amount != null && amount.compareTo(BigDecimal.ZERO) > 0;
