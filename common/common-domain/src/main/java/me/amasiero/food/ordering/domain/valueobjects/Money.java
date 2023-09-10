@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public record Money(BigDecimal amount) {
+
+    public static final Money ZERO = new Money(BigDecimal.ZERO);
     public boolean isGreaterThanZero() {
         return amount != null && amount.compareTo(BigDecimal.ZERO) > 0;
     }
