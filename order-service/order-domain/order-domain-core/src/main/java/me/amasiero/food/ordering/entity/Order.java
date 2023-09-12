@@ -46,6 +46,44 @@ public class Order extends AggregateRoot<OrderId> {
         validateItemsPrice();
     }
 
+    public void pay () {
+        if (status != OrderStatus.PENDING) {
+            throw new OrderDomainException("Order is not in correct state for payment.");
+        }
+        status = OrderStatus.PAID;
+    }
+
+    public void approve() {
+        if (status != OrderStatus.PAID) {
+            throw new OrderDomainException("Order is not in correct state for approval.");
+        }
+        status = OrderStatus.APPROVED;
+    }
+
+    public void initCancel(List<String> failureMessages) {
+        if (status != OrderStatus.PAID) {
+            throw new OrderDomainException("Order is not in correct state for initialize the cancellation process.");
+        }
+        status = OrderStatus.CANCELLING;
+        updateFailureMessages(failureMessages);
+    }
+
+    public void cancel(List<String> failureMessages) {
+        if (!(status == OrderStatus.CANCELLING || status == OrderStatus.PENDING)) {
+            throw new OrderDomainException("Order is not in correct state for cancellation.");
+        }
+        status = OrderStatus.CANCELLED;
+        updateFailureMessages(failureMessages);
+    }
+
+    private void updateFailureMessages(List<String> failureMessages) {
+        if (this.failureMessages != null && failureMessages != null) {
+            this.failureMessages.addAll(failureMessages.stream().filter(message -> !message.isEmpty()).toList());
+        } else if (failureMessages != null) {
+            this.failureMessages = failureMessages;
+        }
+    }
+
     private void validateItemsPrice() {
         Money orderItemsTotal = items.stream().map(item -> {
             validateItemPrice(item);
