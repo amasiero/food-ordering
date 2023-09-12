@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>order-domain-service</artifactId>
+    <artifactId>order-application-service</artifactId>
 
     <properties>
     </properties>

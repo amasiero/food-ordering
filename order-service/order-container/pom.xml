@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>me.amasiero.food.ordering</groupId>
-            <artifactId>order-domain-service</artifactId>
+            <artifactId>order-application-service</artifactId>
         </dependency>
         <dependency>
             <groupId>me.amasiero.food.ordering</groupId>
