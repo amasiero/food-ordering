@@ -2,8 +2,9 @@ package me.amasiero.food.ordering.entity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 import me.amasiero.food.ordering.domain.entity.AggregateRoot;
 import me.amasiero.food.ordering.domain.valueobjects.CustomerId;
 import me.amasiero.food.ordering.domain.valueobjects.Money;
@@ -20,7 +21,8 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Getter
-@Builder
+@SuperBuilder
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Order extends AggregateRoot<OrderId> {
     private final CustomerId customerId;

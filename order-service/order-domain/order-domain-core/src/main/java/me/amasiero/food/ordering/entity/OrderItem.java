@@ -3,15 +3,18 @@ package me.amasiero.food.ordering.entity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import me.amasiero.food.ordering.domain.entity.BaseEntity;
 import me.amasiero.food.ordering.domain.valueobjects.Money;
 import me.amasiero.food.ordering.domain.valueobjects.OrderId;
 import me.amasiero.food.ordering.valueobjects.OrderItemId;
 
 @Getter
-@Builder
+@SuperBuilder
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class OrderItem extends BaseEntity<OrderItemId> {
     @Setter
