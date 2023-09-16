@@ -3,6 +3,7 @@ package me.amasiero.food.ordering.domain.mapper;
 import me.amasiero.food.ordering.domain.dto.create.CreateOrderCommand;
 import me.amasiero.food.ordering.domain.dto.create.CreateOrderResponse;
 import me.amasiero.food.ordering.domain.dto.create.OrderAddress;
+import me.amasiero.food.ordering.domain.dto.track.TrackOrderResponse;
 import me.amasiero.food.ordering.domain.valueobjects.CustomerId;
 import me.amasiero.food.ordering.domain.valueobjects.Money;
 import me.amasiero.food.ordering.domain.valueobjects.ProductId;
@@ -47,6 +48,14 @@ public class OrderDataMapper {
         return CreateOrderResponse.builder()
                 .trackingId(order.getTrackingId().getValue())
                 .status(order.getStatus())
+                .build();
+    }
+
+    public TrackOrderResponse orderToTrackOrderResponse(Order order) {
+        return TrackOrderResponse.builder()
+                .trackingId(order.getTrackingId().getValue())
+                .status(order.getStatus())
+                .failureMessages(order.getFailureMessages())
                 .build();
     }
 
