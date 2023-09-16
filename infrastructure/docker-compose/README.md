@@ -24,3 +24,7 @@ docker-compose -f common.yml -f kafka_cluster.yml up -d
 ```bash
 docker-compose -f common.yml -f init_kafka.yml up
 ```
+
+## Access CMAK (Kafka Manager)
+
+Go to http://localhost:9000
