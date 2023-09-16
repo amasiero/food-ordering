@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Getter
 @SuperBuilder
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Order extends AggregateRoot<OrderId> {
     private final CustomerId customerId;

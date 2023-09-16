@@ -44,10 +44,11 @@ public class OrderDataMapper {
                 .build();
     }
 
-    public CreateOrderResponse orderToCreateOrderResponse(Order order) {
+    public CreateOrderResponse orderToCreateOrderResponse(Order order, String message) {
         return CreateOrderResponse.builder()
                 .trackingId(order.getTrackingId().getValue())
                 .status(order.getStatus())
+                .message(message)
                 .build();
     }
 
@@ -65,9 +66,9 @@ public class OrderDataMapper {
                         .product(Product.builder()
                                 .id(new ProductId(item.productId()))
                                 .build())
-                        .price(new Money(item.price()))
+                        .price(item.price())
                         .quantity(item.quantity())
-                        .subTotal(new Money(item.subTotal()))
+                        .subTotal(item.subTotal())
                         .build())
                 .collect(Collectors.toList());
     }

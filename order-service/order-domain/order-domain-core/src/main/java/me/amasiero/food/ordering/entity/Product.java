@@ -11,7 +11,7 @@ import me.amasiero.food.ordering.domain.valueobjects.ProductId;
 @Getter
 @SuperBuilder
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 public class Product extends BaseEntity<ProductId> {
     private String name;
     private Money price;

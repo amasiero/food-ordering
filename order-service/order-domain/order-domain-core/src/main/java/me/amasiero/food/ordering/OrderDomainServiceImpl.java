@@ -8,6 +8,7 @@ import me.amasiero.food.ordering.entity.Restaurant;
 import me.amasiero.food.ordering.event.OrderCancelledEvent;
 import me.amasiero.food.ordering.event.OrderCreatedEvent;
 import me.amasiero.food.ordering.event.OrderPaidEvent;
+import me.amasiero.food.ordering.exception.OrderDomainException;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -56,7 +57,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
 
     private void validateRestaurant(Restaurant restaurant) {
         if (!restaurant.isActive()) {
-            throw new DomainException(String.format(
+            throw new OrderDomainException(String.format(
                     "Restaurant with id: [%s] is not active.",
                     restaurant.getId().getValue()
             ));
@@ -71,4 +72,5 @@ public class OrderDomainServiceImpl implements OrderDomainService {
             }
         }));
     }
+
 }

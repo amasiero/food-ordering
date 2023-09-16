@@ -2,7 +2,6 @@ package me.amasiero.food.ordering.entity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +13,7 @@ import me.amasiero.food.ordering.valueobjects.OrderItemId;
 
 @Getter
 @SuperBuilder
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class OrderItem extends BaseEntity<OrderItemId> {
     @Setter
@@ -30,12 +29,8 @@ public class OrderItem extends BaseEntity<OrderItemId> {
     }
 
     protected boolean isPriceValid() {
-        return price.equals(product.getPrice()) &&
-                price.isGreaterThanZero() &&
+        return price.isGreaterThanZero() &&
+                price.equals(product.getPrice()) &&
                 price.multiply(quantity).equals(subTotal);
-    }
-
-    public Money getSubTotal() {
-        return price.multiply(quantity);
     }
 }

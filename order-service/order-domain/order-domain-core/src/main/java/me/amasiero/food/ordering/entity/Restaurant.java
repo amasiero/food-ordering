@@ -9,8 +9,8 @@ import me.amasiero.food.ordering.domain.valueobjects.RestaurantId;
 import java.util.List;
 
 @Getter
-@SuperBuilder(toBuilder = true)
-@EqualsAndHashCode(callSuper = true)
+@SuperBuilder
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 public class Restaurant extends AggregateRoot<RestaurantId> {
     private final List<Product> products;
     private final boolean active;

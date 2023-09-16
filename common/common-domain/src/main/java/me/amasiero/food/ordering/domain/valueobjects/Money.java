@@ -23,7 +23,7 @@ public record Money(BigDecimal amount) {
     }
 
     public Money multiply(int times) {
-        return new Money(setScale(amount.multiply(BigDecimal.valueOf(times))));
+        return new Money(setScale(amount.multiply(new BigDecimal(times))));
     }
 
     private BigDecimal setScale(BigDecimal value) {

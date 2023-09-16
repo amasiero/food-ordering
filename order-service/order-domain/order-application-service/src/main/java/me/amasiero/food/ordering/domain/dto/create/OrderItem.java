@@ -2,8 +2,8 @@ package me.amasiero.food.ordering.domain.dto.create;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
+import me.amasiero.food.ordering.domain.valueobjects.Money;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 @Builder
@@ -13,8 +13,8 @@ public record OrderItem(
         @NotNull
         Integer quantity,
         @NotNull
-        BigDecimal price,
+        Money price,
         @NotNull
-        BigDecimal subTotal
+        Money subTotal
 ) {
 }
