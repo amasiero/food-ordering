@@ -1,0 +1,29 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# editorconfig.org
+
+root = true
+
+[*]
+indent_style = space
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{json,yml,yaml,avsc}]
+indent_size = 2
+
+[*.java]
+indent_size = 4
+ij_java_use_single_class_imports = true
+ij_java_insert_inner_class_imports = false
+ij_java_class_count_to_use_import_on_demand = 2147483647
+ij_java_names_count_to_use_import_on_demand = 2147483647
+ij_java_layout_static_imports_separately = true
+ij_java_packages_to_use_import_on_demand = unset
+ij_java_align_multiline_chained_methods = true
+ij_java_imports_layout = javax.**, |, java.**, |, **, |, org.**, |, com.**, |,  me.amasiero.**, |, $*
+
+[*.md]
+trim_trailing_whitespace = false
