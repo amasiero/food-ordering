@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import me.amasiero.food.ordering.application.handler.ErrorDto;
+import me.amasiero.food.ordering.application.handler.GlobalExceptionHandler;
 import me.amasiero.food.ordering.exception.OrderDomainException;
 import me.amasiero.food.ordering.exception.OrderNotFoundException;
 
 @Slf4j
 @ControllerAdvice
-public class OrderGlobalExceptionHandler {
+public class OrderGlobalExceptionHandler extends GlobalExceptionHandler {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)

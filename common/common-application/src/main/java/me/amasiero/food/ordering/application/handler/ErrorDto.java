@@ -1,4 +1,4 @@
-package me.amasiero.food.ordering.application.exception.handler;
+package me.amasiero.food.ordering.application.handler;
 
 import lombok.Builder;
 

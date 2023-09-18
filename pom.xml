@@ -66,6 +66,11 @@
             </dependency>
             <dependency>
                 <groupId>me.amasiero.food.ordering</groupId>
+                <artifactId>common-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>me.amasiero.food.ordering</groupId>
                 <artifactId>kafka-consumer</artifactId>
                 <version>${project.version}</version>
             </dependency>
