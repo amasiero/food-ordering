@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = { ValidationException.class })
     public ErrorDto handleException(ValidationException validationException) {
         if (validationException instanceof ConstraintViolationException constraintViolationException) {
-            String violations = extractVialotionsFromException(constraintViolationException);
+            String violations = extractViolationsFromException(constraintViolationException);
             log.error(violations, validationException);
             return ErrorDto.builder()
                            .code(HttpStatus.BAD_REQUEST.getReasonPhrase())
@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
                        .build();
     }
 
-    private String extractVialotionsFromException(ConstraintViolationException validationException) {
+    private String extractViolationsFromException(ConstraintViolationException validationException) {
         return validationException.getConstraintViolations()
                                   .stream()
                                   .map(ConstraintViolation::getMessage)
