@@ -31,7 +31,7 @@ public class OrderItemEntity {
     @Id
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
-    private OrderEntity orderEntity;
+    private OrderEntity order;
 
     private UUID productId;
     private BigDecimal price;
@@ -43,11 +43,11 @@ public class OrderItemEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItemEntity that = (OrderItemEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(orderEntity, that.orderEntity);
+        return Objects.equals(id, that.id) && Objects.equals(order, that.order);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, orderEntity);
+        return Objects.hash(id, order);
     }
 }

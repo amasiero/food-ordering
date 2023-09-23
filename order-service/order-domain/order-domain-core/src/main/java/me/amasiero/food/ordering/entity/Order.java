@@ -1,10 +1,15 @@
 package me.amasiero.food.ordering.entity;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
+
 import me.amasiero.food.ordering.domain.entity.AggregateRoot;
 import me.amasiero.food.ordering.domain.valueobjects.CustomerId;
 import me.amasiero.food.ordering.domain.valueobjects.Money;
@@ -15,10 +20,6 @@ import me.amasiero.food.ordering.exception.OrderDomainException;
 import me.amasiero.food.ordering.valueobjects.OrderItemId;
 import me.amasiero.food.ordering.valueobjects.StreetAddress;
 import me.amasiero.food.ordering.valueobjects.TrackingId;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Getter
 @SuperBuilder
@@ -34,6 +35,8 @@ public class Order extends AggregateRoot<OrderId> {
     private TrackingId trackingId;
     private OrderStatus status;
     private List<String> failureMessages;
+
+    public static final String FAILURE_MESSAGES_DELIMITER = ",";
 
     public void initializeOrder() {
         setId(new OrderId(UUID.randomUUID()));
