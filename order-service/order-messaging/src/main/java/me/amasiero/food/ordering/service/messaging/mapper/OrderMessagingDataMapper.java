@@ -7,8 +7,11 @@ import org.springframework.stereotype.Component;
 import me.amasiero.food.ordering.entity.Order;
 import me.amasiero.food.ordering.event.OrderCancelledEvent;
 import me.amasiero.food.ordering.event.OrderCreatedEvent;
+import me.amasiero.food.ordering.event.OrderPaidEvent;
 import me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus;
 import me.amasiero.food.ordering.order.avro.model.PaymentRequestAvroModel;
+import me.amasiero.food.ordering.order.avro.model.RestaurantApprovalRequestAvroModel;
+import me.amasiero.food.ordering.order.avro.model.RestaurantOrderStatus;
 
 @Component
 public class OrderMessagingDataMapper {
@@ -39,5 +42,23 @@ public class OrderMessagingDataMapper {
                                       .setCreatedAt(orderCancelledEvent.createdAt().toInstant())
                                       .setPaymentOrderStatus(PaymentOrderStatus.CANCELLED)
                                       .build();
+    }
+
+    public RestaurantApprovalRequestAvroModel orderPaidEventToRestaurantApprovalRequestAvroModel(OrderPaidEvent domainEvent) {
+        Order order = domainEvent.order();
+        return RestaurantApprovalRequestAvroModel.newBuilder()
+                                                 .setId(UUID.randomUUID())
+                                                 .setSagaId(null)
+                                                 .setOrderId(order.getId().getValue())
+                                                 .setProducts(order.getItems().stream().map(item ->
+                                                     me.amasiero.food.ordering.order.avro.model.Product
+                                                         .builder()
+                                                         .id(item.getProduct().getId().getValue())
+                                                         .quantity(item.getQuantity())
+                                                         .build()).toList())
+                                                 .setPrice(order.getPrice().amount())
+                                                 .setCreatedAt(domainEvent.createdAt().toInstant())
+                                                 .setRestaurantOrderStatus(RestaurantOrderStatus.PAID)
+                                                 .build();
     }
 }
