@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Component;
 
 import me.amasiero.food.ordering.domain.dto.message.PaymentResponse;
+import me.amasiero.food.ordering.domain.dto.message.RestaurantApprovalResponse;
 import me.amasiero.food.ordering.entity.Order;
 import me.amasiero.food.ordering.event.OrderCancelledEvent;
 import me.amasiero.food.ordering.event.OrderCreatedEvent;
@@ -13,6 +14,7 @@ import me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus;
 import me.amasiero.food.ordering.order.avro.model.PaymentRequestAvroModel;
 import me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel;
 import me.amasiero.food.ordering.order.avro.model.RestaurantApprovalRequestAvroModel;
+import me.amasiero.food.ordering.order.avro.model.RestaurantApprovalResponseAvroModel;
 import me.amasiero.food.ordering.order.avro.model.RestaurantOrderStatus;
 
 @Component
@@ -77,5 +79,18 @@ public class OrderMessagingDataMapper {
                               .createdAt(paymentResponseAvroModel.getCreatedAt())
                               .failureMessages(paymentResponseAvroModel.getFailureMessages())
                               .build();
+    }
+
+    public RestaurantApprovalResponse restaurantApprovalResponseAvroModelToRestaurantApprovalResponse(RestaurantApprovalResponseAvroModel restaurantApprovalResponseAvroModel) {
+        return RestaurantApprovalResponse.builder()
+                                         .id(restaurantApprovalResponseAvroModel.getId())
+                                         .sagaId(restaurantApprovalResponseAvroModel.getSagaId())
+                                         .orderId(restaurantApprovalResponseAvroModel.getOrderId())
+                                         .restaurantId(restaurantApprovalResponseAvroModel.getRestaurantId())
+                                         .createdAt(restaurantApprovalResponseAvroModel.getCreatedAt())
+                                         .status(me.amasiero.food.ordering.domain.valueobjects.OrderApprovalStatus.valueOf(
+                                             restaurantApprovalResponseAvroModel.getOrderApprovalStatus().name()))
+                                         .failureMessages(restaurantApprovalResponseAvroModel.getFailureMessages())
+                                         .build();
     }
 }
