@@ -6,29 +6,32 @@
     {
       "name": "id",
       "type": {
-        "type": "string",
-        "logicalType": "uuid"
+        "type": "string"
       }
     },
     {
       "name": "sagaId",
       "type": {
-        "type": "string",
-        "logicalType": "uuid"
+        "type": "string"
       }
     },
     {
       "name": "restaurantId",
       "type": {
-        "type": "string",
-        "logicalType": "uuid"
+        "type": "string"
       }
     },
     {
       "name": "orderId",
       "type": {
-        "type": "string",
-        "logicalType": "uuid"
+        "type": "string"
+      }
+    },
+    {
+      "name": "createdAt",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
       }
     },
     {
@@ -40,13 +43,6 @@
           "APPROVED",
           "REJECTED"
         ]
-      }
-    },
-    {
-      "name": "createdAt",
-      "type": {
-        "type": "long",
-        "logicalType": "timestamp-millis"
       }
     },
     {

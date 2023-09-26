@@ -14,15 +14,14 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 6976498442507231209L;
+  private static final long serialVersionUID = 7898715256632600144L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PaymentResponseAvroModel\",\"namespace\":\"me.amasiero.food.ordering.order.avro.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"sagaId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"paymentId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"customerId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"orderId\",\"type\":{\"type\":\"string\",\"logicalType\":\"uuid\"}},{\"name\":\"price\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":10,\"scale\":2}},{\"name\":\"createdAt\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"paymentOrderStatus\",\"type\":{\"type\":\"enum\",\"name\":\"PaymentOrderStatus\",\"symbols\":[\"COMPLETED\",\"CANCELLED\",\"FAILED\"]}},{\"name\":\"failureMessages\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PaymentResponseAvroModel\",\"namespace\":\"me.amasiero.food.ordering.order.avro.model\",\"fields\":[{\"name\":\"id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"sagaId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"paymentId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"customerId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"orderId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"price\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":10,\"scale\":2}},{\"name\":\"createdAt\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"paymentStatus\",\"type\":{\"type\":\"enum\",\"name\":\"PaymentStatus\",\"symbols\":[\"COMPLETED\",\"CANCELLED\",\"FAILED\"]}},{\"name\":\"failureMessages\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
   static {
-    MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.UUIDConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
     MODEL$.addLogicalTypeConversion(new org.apache.avro.Conversions.DecimalConversion());
   }
@@ -78,14 +77,14 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     return DECODER.decode(b);
   }
 
-  private java.util.UUID id;
-  private java.util.UUID sagaId;
-  private java.util.UUID paymentId;
-  private java.util.UUID customerId;
-  private java.util.UUID orderId;
+  private java.lang.String id;
+  private java.lang.String sagaId;
+  private java.lang.String paymentId;
+  private java.lang.String customerId;
+  private java.lang.String orderId;
   private java.math.BigDecimal price;
   private java.time.Instant createdAt;
-  private me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus paymentOrderStatus;
+  private me.amasiero.food.ordering.order.avro.model.PaymentStatus paymentStatus;
   private java.util.List<java.lang.String> failureMessages;
 
   /**
@@ -104,10 +103,10 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * @param orderId The new value for orderId
    * @param price The new value for price
    * @param createdAt The new value for createdAt
-   * @param paymentOrderStatus The new value for paymentOrderStatus
+   * @param paymentStatus The new value for paymentStatus
    * @param failureMessages The new value for failureMessages
    */
-  public PaymentResponseAvroModel(java.util.UUID id, java.util.UUID sagaId, java.util.UUID paymentId, java.util.UUID customerId, java.util.UUID orderId, java.math.BigDecimal price, java.time.Instant createdAt, me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus paymentOrderStatus, java.util.List<java.lang.String> failureMessages) {
+  public PaymentResponseAvroModel(java.lang.String id, java.lang.String sagaId, java.lang.String paymentId, java.lang.String customerId, java.lang.String orderId, java.math.BigDecimal price, java.time.Instant createdAt, me.amasiero.food.ordering.order.avro.model.PaymentStatus paymentStatus, java.util.List<java.lang.String> failureMessages) {
     this.id = id;
     this.sagaId = sagaId;
     this.paymentId = paymentId;
@@ -115,7 +114,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     this.orderId = orderId;
     this.price = price;
     this.createdAt = createdAt.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
-    this.paymentOrderStatus = paymentOrderStatus;
+    this.paymentStatus = paymentStatus;
     this.failureMessages = failureMessages;
   }
 
@@ -136,7 +135,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     case 4: return orderId;
     case 5: return price;
     case 6: return createdAt;
-    case 7: return paymentOrderStatus;
+    case 7: return paymentStatus;
     case 8: return failureMessages;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
@@ -144,11 +143,11 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
 
   private static final org.apache.avro.Conversion<?>[] conversions =
       new org.apache.avro.Conversion<?>[] {
-      new org.apache.avro.Conversions.UUIDConversion(),
-      new org.apache.avro.Conversions.UUIDConversion(),
-      new org.apache.avro.Conversions.UUIDConversion(),
-      new org.apache.avro.Conversions.UUIDConversion(),
-      new org.apache.avro.Conversions.UUIDConversion(),
+      null,
+      null,
+      null,
+      null,
+      null,
       new org.apache.avro.Conversions.DecimalConversion(),
       new org.apache.avro.data.TimeConversions.TimestampMillisConversion(),
       null,
@@ -166,14 +165,14 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: id = (java.util.UUID)value$; break;
-    case 1: sagaId = (java.util.UUID)value$; break;
-    case 2: paymentId = (java.util.UUID)value$; break;
-    case 3: customerId = (java.util.UUID)value$; break;
-    case 4: orderId = (java.util.UUID)value$; break;
+    case 0: id = value$ != null ? value$.toString() : null; break;
+    case 1: sagaId = value$ != null ? value$.toString() : null; break;
+    case 2: paymentId = value$ != null ? value$.toString() : null; break;
+    case 3: customerId = value$ != null ? value$.toString() : null; break;
+    case 4: orderId = value$ != null ? value$.toString() : null; break;
     case 5: price = (java.math.BigDecimal)value$; break;
     case 6: createdAt = (java.time.Instant)value$; break;
-    case 7: paymentOrderStatus = (me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus)value$; break;
+    case 7: paymentStatus = (me.amasiero.food.ordering.order.avro.model.PaymentStatus)value$; break;
     case 8: failureMessages = (java.util.List<java.lang.String>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
@@ -183,7 +182,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Gets the value of the 'id' field.
    * @return The value of the 'id' field.
    */
-  public java.util.UUID getId() {
+  public java.lang.String getId() {
     return id;
   }
 
@@ -192,7 +191,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Sets the value of the 'id' field.
    * @param value the value to set.
    */
-  public void setId(java.util.UUID value) {
+  public void setId(java.lang.String value) {
     this.id = value;
   }
 
@@ -200,7 +199,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Gets the value of the 'sagaId' field.
    * @return The value of the 'sagaId' field.
    */
-  public java.util.UUID getSagaId() {
+  public java.lang.String getSagaId() {
     return sagaId;
   }
 
@@ -209,7 +208,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Sets the value of the 'sagaId' field.
    * @param value the value to set.
    */
-  public void setSagaId(java.util.UUID value) {
+  public void setSagaId(java.lang.String value) {
     this.sagaId = value;
   }
 
@@ -217,7 +216,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Gets the value of the 'paymentId' field.
    * @return The value of the 'paymentId' field.
    */
-  public java.util.UUID getPaymentId() {
+  public java.lang.String getPaymentId() {
     return paymentId;
   }
 
@@ -226,7 +225,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Sets the value of the 'paymentId' field.
    * @param value the value to set.
    */
-  public void setPaymentId(java.util.UUID value) {
+  public void setPaymentId(java.lang.String value) {
     this.paymentId = value;
   }
 
@@ -234,7 +233,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Gets the value of the 'customerId' field.
    * @return The value of the 'customerId' field.
    */
-  public java.util.UUID getCustomerId() {
+  public java.lang.String getCustomerId() {
     return customerId;
   }
 
@@ -243,7 +242,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Sets the value of the 'customerId' field.
    * @param value the value to set.
    */
-  public void setCustomerId(java.util.UUID value) {
+  public void setCustomerId(java.lang.String value) {
     this.customerId = value;
   }
 
@@ -251,7 +250,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Gets the value of the 'orderId' field.
    * @return The value of the 'orderId' field.
    */
-  public java.util.UUID getOrderId() {
+  public java.lang.String getOrderId() {
     return orderId;
   }
 
@@ -260,7 +259,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
    * Sets the value of the 'orderId' field.
    * @param value the value to set.
    */
-  public void setOrderId(java.util.UUID value) {
+  public void setOrderId(java.lang.String value) {
     this.orderId = value;
   }
 
@@ -299,20 +298,20 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
   }
 
   /**
-   * Gets the value of the 'paymentOrderStatus' field.
-   * @return The value of the 'paymentOrderStatus' field.
+   * Gets the value of the 'paymentStatus' field.
+   * @return The value of the 'paymentStatus' field.
    */
-  public me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus getPaymentOrderStatus() {
-    return paymentOrderStatus;
+  public me.amasiero.food.ordering.order.avro.model.PaymentStatus getPaymentStatus() {
+    return paymentStatus;
   }
 
 
   /**
-   * Sets the value of the 'paymentOrderStatus' field.
+   * Sets the value of the 'paymentStatus' field.
    * @param value the value to set.
    */
-  public void setPaymentOrderStatus(me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus value) {
-    this.paymentOrderStatus = value;
+  public void setPaymentStatus(me.amasiero.food.ordering.order.avro.model.PaymentStatus value) {
+    this.paymentStatus = value;
   }
 
   /**
@@ -373,14 +372,14 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<PaymentResponseAvroModel>
     implements org.apache.avro.data.RecordBuilder<PaymentResponseAvroModel> {
 
-    private java.util.UUID id;
-    private java.util.UUID sagaId;
-    private java.util.UUID paymentId;
-    private java.util.UUID customerId;
-    private java.util.UUID orderId;
+    private java.lang.String id;
+    private java.lang.String sagaId;
+    private java.lang.String paymentId;
+    private java.lang.String customerId;
+    private java.lang.String orderId;
     private java.math.BigDecimal price;
     private java.time.Instant createdAt;
-    private me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus paymentOrderStatus;
+    private me.amasiero.food.ordering.order.avro.model.PaymentStatus paymentStatus;
     private java.util.List<java.lang.String> failureMessages;
 
     /** Creates a new Builder */
@@ -422,8 +421,8 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
         this.createdAt = data().deepCopy(fields()[6].schema(), other.createdAt);
         fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
-      if (isValidValue(fields()[7], other.paymentOrderStatus)) {
-        this.paymentOrderStatus = data().deepCopy(fields()[7].schema(), other.paymentOrderStatus);
+      if (isValidValue(fields()[7], other.paymentStatus)) {
+        this.paymentStatus = data().deepCopy(fields()[7].schema(), other.paymentStatus);
         fieldSetFlags()[7] = other.fieldSetFlags()[7];
       }
       if (isValidValue(fields()[8], other.failureMessages)) {
@@ -466,8 +465,8 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
         this.createdAt = data().deepCopy(fields()[6].schema(), other.createdAt);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.paymentOrderStatus)) {
-        this.paymentOrderStatus = data().deepCopy(fields()[7].schema(), other.paymentOrderStatus);
+      if (isValidValue(fields()[7], other.paymentStatus)) {
+        this.paymentStatus = data().deepCopy(fields()[7].schema(), other.paymentStatus);
         fieldSetFlags()[7] = true;
       }
       if (isValidValue(fields()[8], other.failureMessages)) {
@@ -480,7 +479,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * Gets the value of the 'id' field.
       * @return The value.
       */
-    public java.util.UUID getId() {
+    public java.lang.String getId() {
       return id;
     }
 
@@ -490,7 +489,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setId(java.util.UUID value) {
+    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setId(java.lang.String value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -520,7 +519,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * Gets the value of the 'sagaId' field.
       * @return The value.
       */
-    public java.util.UUID getSagaId() {
+    public java.lang.String getSagaId() {
       return sagaId;
     }
 
@@ -530,7 +529,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * @param value The value of 'sagaId'.
       * @return This builder.
       */
-    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setSagaId(java.util.UUID value) {
+    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setSagaId(java.lang.String value) {
       validate(fields()[1], value);
       this.sagaId = value;
       fieldSetFlags()[1] = true;
@@ -560,7 +559,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * Gets the value of the 'paymentId' field.
       * @return The value.
       */
-    public java.util.UUID getPaymentId() {
+    public java.lang.String getPaymentId() {
       return paymentId;
     }
 
@@ -570,7 +569,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * @param value The value of 'paymentId'.
       * @return This builder.
       */
-    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setPaymentId(java.util.UUID value) {
+    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setPaymentId(java.lang.String value) {
       validate(fields()[2], value);
       this.paymentId = value;
       fieldSetFlags()[2] = true;
@@ -600,7 +599,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * Gets the value of the 'customerId' field.
       * @return The value.
       */
-    public java.util.UUID getCustomerId() {
+    public java.lang.String getCustomerId() {
       return customerId;
     }
 
@@ -610,7 +609,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * @param value The value of 'customerId'.
       * @return This builder.
       */
-    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setCustomerId(java.util.UUID value) {
+    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setCustomerId(java.lang.String value) {
       validate(fields()[3], value);
       this.customerId = value;
       fieldSetFlags()[3] = true;
@@ -640,7 +639,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * Gets the value of the 'orderId' field.
       * @return The value.
       */
-    public java.util.UUID getOrderId() {
+    public java.lang.String getOrderId() {
       return orderId;
     }
 
@@ -650,7 +649,7 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
       * @param value The value of 'orderId'.
       * @return This builder.
       */
-    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setOrderId(java.util.UUID value) {
+    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setOrderId(java.lang.String value) {
       validate(fields()[4], value);
       this.orderId = value;
       fieldSetFlags()[4] = true;
@@ -756,41 +755,41 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     }
 
     /**
-      * Gets the value of the 'paymentOrderStatus' field.
+      * Gets the value of the 'paymentStatus' field.
       * @return The value.
       */
-    public me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus getPaymentOrderStatus() {
-      return paymentOrderStatus;
+    public me.amasiero.food.ordering.order.avro.model.PaymentStatus getPaymentStatus() {
+      return paymentStatus;
     }
 
 
     /**
-      * Sets the value of the 'paymentOrderStatus' field.
-      * @param value The value of 'paymentOrderStatus'.
+      * Sets the value of the 'paymentStatus' field.
+      * @param value The value of 'paymentStatus'.
       * @return This builder.
       */
-    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setPaymentOrderStatus(me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus value) {
+    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder setPaymentStatus(me.amasiero.food.ordering.order.avro.model.PaymentStatus value) {
       validate(fields()[7], value);
-      this.paymentOrderStatus = value;
+      this.paymentStatus = value;
       fieldSetFlags()[7] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'paymentOrderStatus' field has been set.
-      * @return True if the 'paymentOrderStatus' field has been set, false otherwise.
+      * Checks whether the 'paymentStatus' field has been set.
+      * @return True if the 'paymentStatus' field has been set, false otherwise.
       */
-    public boolean hasPaymentOrderStatus() {
+    public boolean hasPaymentStatus() {
       return fieldSetFlags()[7];
     }
 
 
     /**
-      * Clears the value of the 'paymentOrderStatus' field.
+      * Clears the value of the 'paymentStatus' field.
       * @return This builder.
       */
-    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder clearPaymentOrderStatus() {
-      paymentOrderStatus = null;
+    public me.amasiero.food.ordering.order.avro.model.PaymentResponseAvroModel.Builder clearPaymentStatus() {
+      paymentStatus = null;
       fieldSetFlags()[7] = false;
       return this;
     }
@@ -840,14 +839,14 @@ public class PaymentResponseAvroModel extends org.apache.avro.specific.SpecificR
     public PaymentResponseAvroModel build() {
       try {
         PaymentResponseAvroModel record = new PaymentResponseAvroModel();
-        record.id = fieldSetFlags()[0] ? this.id : (java.util.UUID) defaultValue(fields()[0]);
-        record.sagaId = fieldSetFlags()[1] ? this.sagaId : (java.util.UUID) defaultValue(fields()[1]);
-        record.paymentId = fieldSetFlags()[2] ? this.paymentId : (java.util.UUID) defaultValue(fields()[2]);
-        record.customerId = fieldSetFlags()[3] ? this.customerId : (java.util.UUID) defaultValue(fields()[3]);
-        record.orderId = fieldSetFlags()[4] ? this.orderId : (java.util.UUID) defaultValue(fields()[4]);
+        record.id = fieldSetFlags()[0] ? this.id : (java.lang.String) defaultValue(fields()[0]);
+        record.sagaId = fieldSetFlags()[1] ? this.sagaId : (java.lang.String) defaultValue(fields()[1]);
+        record.paymentId = fieldSetFlags()[2] ? this.paymentId : (java.lang.String) defaultValue(fields()[2]);
+        record.customerId = fieldSetFlags()[3] ? this.customerId : (java.lang.String) defaultValue(fields()[3]);
+        record.orderId = fieldSetFlags()[4] ? this.orderId : (java.lang.String) defaultValue(fields()[4]);
         record.price = fieldSetFlags()[5] ? this.price : (java.math.BigDecimal) defaultValue(fields()[5]);
         record.createdAt = fieldSetFlags()[6] ? this.createdAt : (java.time.Instant) defaultValue(fields()[6]);
-        record.paymentOrderStatus = fieldSetFlags()[7] ? this.paymentOrderStatus : (me.amasiero.food.ordering.order.avro.model.PaymentOrderStatus) defaultValue(fields()[7]);
+        record.paymentStatus = fieldSetFlags()[7] ? this.paymentStatus : (me.amasiero.food.ordering.order.avro.model.PaymentStatus) defaultValue(fields()[7]);
         record.failureMessages = fieldSetFlags()[8] ? this.failureMessages : (java.util.List<java.lang.String>) defaultValue(fields()[8]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
