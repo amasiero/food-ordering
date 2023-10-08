@@ -1,7 +1,11 @@
 package me.amasiero.food.ordering;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
-import me.amasiero.food.ordering.domain.exception.DomainException;
+
 import me.amasiero.food.ordering.entity.Order;
 import me.amasiero.food.ordering.entity.Product;
 import me.amasiero.food.ordering.entity.Restaurant;
@@ -10,14 +14,10 @@ import me.amasiero.food.ordering.event.OrderCreatedEvent;
 import me.amasiero.food.ordering.event.OrderPaidEvent;
 import me.amasiero.food.ordering.exception.OrderDomainException;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.List;
+import static me.amasiero.food.ordering.domain.DomainConstants.UTC;
 
 @Slf4j
 public class OrderDomainServiceImpl implements OrderDomainService {
-
-    private static final String UTC = "UTC";
 
     @Override
     public OrderCreatedEvent validateAndInitializeOrder(Order order, Restaurant restaurant) {
